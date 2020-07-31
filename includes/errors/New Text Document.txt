@@ -1,0 +1,16 @@
+<!DOCTYPE html 5.0>
+<html>
+
+<?php include 'includes/htmlpages/header.html.php'?>
+
+<section id='section1'>
+ <div class='internals' id='internal12'>
+   <?php echo $error;?>  
+ </div>
+</section>
+
+
+
+<?php include 'includes/htmlpages/footer.html.php'?>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[07-Aug-2017 21:36:35 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'agmall_bona'@'standard10.smartwebng.com' (using password: YES) in /home/agmallco/public_html/bona/includes/db/connect.php on line 2
+[07-Aug-2017 21:36:35 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'agmall_bona'@'standard10.smartwebng.com' (using password: YES)' in /home/agmallco/public_html/bona/includes/db/connect2.php:7
+Stack trace:
+#0 /home/agmallco/public_html/bona/includes/db/connect2.php(7): PDO->__construct('mysql:host=agma...', 'agmall_bona', 'thanks198915')
+#1 /home/agmallco/public_html/bona/user/user.class.php(23): Dbconn->__construct()
+#2 /home/agmallco/public_html/bona/inc/htmls/header.html.php(8): user->__construct()
+#3 /home/agmallco/public_html/bona/includes/errors/error.html.php(4): include_once('/home/agmallco/...')
+#4 /home/agmallco/public_html/bona/includes/db/connect.php(5): include('/home/agmallco/...')
+#5 /home/agmallco/public_html/bona/createtables.php(2): include('/home/agmallco/...')
+#6 {main}
+  thrown in /home/agmallco/public_html/bona/includes/db/connect2.php on line 7

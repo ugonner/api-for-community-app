@@ -1,0 +1,12 @@
+(SELECT product.id, title, productimagedisplayname, dateofpublication, productcategory.id as categoryid,
+        productcategory.name as categoryname,1 FROM product INNER JOIN productcategory ON productcategoryid = productcategory.id
+        ORDER BY product.id DESC LIMIT 2)
+   UNION (SELECT facility.id, facility.name, profilepic, dateofpublication, facilitycategory.id,
+        facilitycategory.name,2 FROM facility INNER JOIN facilitycategory ON facility.categoryid = facilitycategory.id
+        ORDER BY facility.id DESC LIMIT 2)
+   UNION (SELECT article.id, title, articleimagedisplayname, dateofpublication, category.id ,
+        category.name,3  FROM article INNER JOIN category ON categoryid = category.id
+        ORDER BY article.id DESC LIMIT 2)
+
+
+    SELECT facility.id, facility.name, profilepic, dateofpublication, facilitycategory.id, facilitycategory.name,2 FROM facility INNER JOIN facilitycategory ON facility.categoryid = facilitycategory.id ORDER BY facility.id DESC LIMIT 2

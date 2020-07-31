@@ -1,0 +1,1 @@
+SELECT producttransaction.id,postid, userid, ownerid, marked, statusid, statusnote, statusdate, firstname, profilepic,transactionstatus.name as statusname FROM producttransaction INNER JOIN user ON userid = user.id INNER JOIN transactionstatus ON statusid = transactionstatus.id WHERE ownerid = 1 ORDER BY statusdate DESC LIMIT ".$offset." , ".$limi

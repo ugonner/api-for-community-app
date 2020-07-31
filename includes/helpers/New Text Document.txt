@@ -1,0 +1,63 @@
+function insertArticleFiles($file, $folder){
+  if(isset($_FILES[$file]) 
+and is_uploaded_file($_FILES[$file]['tmp_name'])){
+   $type=  $_FILES[$file]['type'];
+
+    if(preg_match('/^image\/p?jpeg$/i' ,
+        $_FILES[$file]['type'])){
+         $ext= '.jpg';
+      } else 
+    if(preg_match('/^image\/gif$/i' ,
+       $_FILES[$file]['type'])){
+         $ext= '.gif';
+      } else
+    if(preg_match('/^image\/(x-)?png$/i' ,
+       $_FILES[$file]['type'])){
+         $ext= '.png';
+      }else{
+    if(preg_match('/^video\/(x-)?3gp$/i' ,
+       $_FILES[$file]['type'])){
+         $ext= '.3gp';
+      } else
+    if(preg_match('/^video\/(x-)?mp(eg)?4$/i' ,
+       $_FILES[$file]['type'])){
+         $ext= '.mp4';
+      } else 
+    if(preg_match('/^audio\/(x-)?mp(eg)?4$/i' ,
+       $_FILES[$file]['type'])){
+         $ext= '.mp3';
+      } else {
+        $ext = '.unknown';
+       }
+global $link,$title,$articleid;
+
+$filename = $_SERVER['DOCUMENT_ROOT'] . $folder
+    . $_FILES[$file]['name'].time(). $ext;  
+$displayname = $folder
+    . $_FILES[$file]['name'] .time().$ext;  
+
+$file2=file_get_contents($_FILES[$file]['tmp_name'] , $filename);
+if(!copy($file2)){
+      unlink($filename);
+      $error = 'unable to save file';
+	include $_SERVER['DOCUMENT_ROOT'].'/ugo/forms/error.html.php';
+	exit();
+    }
+
+$sql = 'INSERT INTO file 
+ (title, filename , displayname ,
+ articleid)
+VALUES( "'.$title.'" , "'.$filename.'" ,
+ "'.$displayname.'" , "'.$articleid.'")';
+  } 
+
+$insert = mysqli_query($link, $sql);
+ if(!$insert){
+   $error = mysqli_error($link);
+   $error2 = 'no file insert';
+           include $_SERVER['DOCUMENT_ROOT'].'/ugo/forms/error.html.php';
+    exit();
+    }
+  return true;
+
+}
